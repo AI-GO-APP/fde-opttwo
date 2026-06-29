@@ -1,3 +1,5 @@
 {
-  "actions": []
+  "submit_bid": {
+    "description": "回收商對某台設備投標（x_opt_bids）；驗證 external app 寫入 tenant 共用 Custom Object"
+  }
 }

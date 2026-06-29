@@ -1,0 +1,7 @@
+{
+  "summarize_leads": {
+    "description": "統計潛在客戶資料摘要（示範前後端 Action 協作）",
+    "timeout_ms": 10000,
+    "is_enabled": true
+  }
+}

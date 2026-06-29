@@ -1,3 +1,11 @@
 {
-  "actions": []
+  "create_case": {
+    "description": "建立案件（x_opt_cases）；盤商承接退場商家一批設備時開案，帶 total_package_price"
+  },
+  "add_equipment": {
+    "description": "在案件下新增一台設備（x_opt_equipment），可同時設底價（pending/none）"
+  },
+  "get_case_detail": {
+    "description": "讀案件+設備+競標，EAV in-memory join 算毛利（Σ最高出價−總包價）與底價加總"
+  }
 }
