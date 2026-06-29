@@ -23,3 +23,8 @@ CLAUDE.local.md
 *.pub
 *.pem
 *.key
+
+# opttwo 官網（獨立專案，暫不入此 repo；之後要移入時把以下幾行拿掉）
+vfs/website/
+vfs/scripts/deploy_website.py
+backups/
