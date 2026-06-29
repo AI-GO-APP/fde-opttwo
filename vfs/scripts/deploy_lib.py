@@ -65,12 +65,27 @@ def read_vfs(vfs_dir):
     return vfs
 
 
+def _get_vfs_version(h, app_id):
+    s, b = _req("GET", f"{API_BASE}/builder/apps/{app_id}", h)
+    if s != 200:
+        sys.exit(f"❌ 取得 app 版本失敗：{s} {b}")
+    return (b or {}).get("vfs_version", 1)
+
+
 def upload_vfs(h, app_id, vfs):
+    """PUT VFS 快照。平台要求樂觀鎖 expected_version=當前 vfs_version；
+    寫入成功後平台會把版本 +1。遇 409 版本衝突自動重取版本重試一次。"""
     print(f"  檔案數: {len(vfs)}")
-    status, body = _req("PUT", f"{API_BASE}/builder/apps/{app_id}/source", h,
-                        {"vfs_state": vfs}, timeout=60)
-    print(f"  上傳: {status}")
-    if status != 200:
+    for attempt in range(2):
+        ver = _get_vfs_version(h, app_id)
+        status, body = _req("PUT", f"{API_BASE}/builder/apps/{app_id}/source", h,
+                            {"vfs_state": vfs, "expected_version": ver}, timeout=60)
+        print(f"  上傳: {status}（expected_version={ver}）")
+        if status == 200:
+            return
+        if status == 409 and attempt == 0:
+            print("  ⚠️ 版本衝突，重新取得版本後重試...")
+            continue
         sys.exit(f"❌ 上傳失敗：{body}")
 
 
