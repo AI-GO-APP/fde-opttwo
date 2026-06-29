@@ -1,0 +1,19 @@
+/* Shadow DOM 注意：CSS 變數必須用 :host, :root 雙選擇器，只用 :root 在 Shadow DOM 會失效 */
+:host, :root {
+  --primary: #2563eb;
+  --bg: #ffffff;
+  --fg: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+body, #root {
+  height: 100vh;
+  overflow-y: auto;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif;
+}
+
+/* ❌ 禁止使用瀏覽器原生 alert/confirm/prompt（會卡死 Custom App 沙盒），改用 React state 對話框 */

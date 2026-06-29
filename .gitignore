@@ -1,0 +1,25 @@
+# 環境變數（含 APP_ID、帳密）— 絕不入庫
+.env
+.env.local
+.env.*.local
+
+# 依賴與建置
+node_modules/
+.venv/
+__pycache__/
+dist/
+*.local
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 個人設定
+CLAUDE.local.md
+
+# 金鑰
+*.pub
+*.pem
+*.key
