@@ -19,7 +19,7 @@ def execute(ctx):
     now = datetime.now(timezone.utc).isoformat()
     rec = ctx.db.insert_object(slug="x_opt_cases", data={
         "supplier_id": str(p.get("supplier_id") or ""),
-        "assigned_agent_id": str(getattr(ctx.user, "id", "") or ""),
+        "assigned_agent_id": str(getattr(ctx, "user_id", "") or ""),
         "total_package_price": total,
         "estimate_price": str(p.get("estimate_price") or ""),
         "formal_price": str(p.get("formal_price") or ""),

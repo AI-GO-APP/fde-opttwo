@@ -26,7 +26,7 @@ def execute(ctx):
         ctx.response.json({"error": f"找不到設備（id={equipment_id}）"})
         return
 
-    uid = str(getattr(ctx.user, "id", "") or "")
+    uid = str(getattr(ctx, "user_id", "") or "")
     now = datetime.now(timezone.utc).isoformat()
     rec = ctx.db.insert_object(slug="x_opt_bids", data={
         "equipment_id": equipment_id,

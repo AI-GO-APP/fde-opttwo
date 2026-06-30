@@ -28,7 +28,7 @@ def execute(ctx):
 
     floor = str(p.get("floor_price") or "").strip()
     now = datetime.now(timezone.utc).isoformat()
-    uid = str(getattr(ctx.user, "id", "") or "")
+    uid = str(getattr(ctx, "user_id", "") or "")
 
     rec = ctx.db.insert_object(slug="x_opt_equipment", data={
         "case_id": case_id,

@@ -7,5 +7,14 @@
   },
   "get_case_detail": {
     "description": "讀案件+設備+競標，EAV in-memory join 算毛利（Σ最高出價−總包價）與底價加總"
+  },
+  "get_my_permissions": {
+    "description": "回傳當前盤商員工的有效權限（讀 x_opt_permission_groups + x_opt_settings；admin bypass）"
+  },
+  "set_floor_price": {
+    "description": "設定設備底價，後端權限把關；admin→approved 直接生效、主管→pending 待審"
+  },
+  "approve_floor_price": {
+    "description": "核可待審底價 pending→approved；僅 admin/有 approve_floor_price 權限者"
   }
 }

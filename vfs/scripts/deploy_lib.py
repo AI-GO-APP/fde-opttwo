@@ -9,11 +9,21 @@ API_BASE = "https://ai-go.app/api/v1"
 def _req(method, url, headers, data=None, timeout=30):
     body = json.dumps(data).encode() if data is not None else None
     req = urllib.request.Request(url, data=body, headers=headers, method=method)
+
+    def _parse(raw):
+        # DELETE 等回 204 空 body；空字串不要硬 json.loads
+        if not raw:
+            return None
+        try:
+            return json.loads(raw)
+        except (ValueError, TypeError):
+            return raw.decode("utf-8", "replace") if isinstance(raw, bytes) else raw
+
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return resp.status, json.loads(resp.read())
+            return resp.status, _parse(resp.read())
     except urllib.error.HTTPError as e:
-        return e.code, json.loads(e.read())
+        return e.code, _parse(e.read())
 
 
 def require_env(key):
