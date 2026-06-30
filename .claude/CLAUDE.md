@@ -4,6 +4,12 @@ Opttwo 是把 FDE-ReLoop（設備回收媒合工具）搬遷到 AIGO custom app 
 結構與慣例參考 sibling app `fde-sc1984`。搬遷規劃見 `MIGRATION_PLAN.md`，
 資料模型見 `ARCHITECTURE.md`，待辦見 `AGENT_PLAN.md`。
 
+## 工作流程鐵則（每次變更都要遵守）
+
+1. **每個變更都要「測通」再「commit」**：寫完 action/腳本，一定要實機跑測試（如 test_slice.py / test_permissions.py）確認全綠，才 commit + push。沒測過不 commit。
+2. **逐路徑 git add，絕不 `git add -A`**：此資料夾有並行的「官網」工作會長出新檔（已 gitignore，但仍逐檔 add 最保險）。
+3. 新功能盡量附對應測試腳本（放 vfs/scripts/test_*.py），讓回歸可重跑。
+
 ## 專案結構
 
 ```
