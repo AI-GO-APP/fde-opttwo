@@ -25,6 +25,7 @@ CLAUDE.local.md
 *.key
 
 # opttwo 官網（獨立專案，暫不入此 repo；之後要移入時把以下幾行拿掉）
-vfs/website/
-vfs/scripts/deploy_website.py
+# 用萬用字元涵蓋並行產生的官網變體（website_lively / website_professional / deploy_website_variant 等）
+vfs/website*/
+vfs/scripts/deploy_website*.py
 backups/
