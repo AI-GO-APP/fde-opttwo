@@ -16,5 +16,8 @@
   },
   "approve_floor_price": {
     "description": "核可待審底價 pending→approved；僅 admin/有 approve_floor_price 權限者"
+  },
+  "match_recyclers": {
+    "description": "依案件地區/設備分類媒合回收商偏好(x_opt_recycler_pref)，渲染 LINE 通知文案；實際發送待 Phase 4"
   }
 }

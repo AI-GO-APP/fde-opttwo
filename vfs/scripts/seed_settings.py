@@ -32,9 +32,14 @@ WORKFLOW_PARAMETERS = {
     "min_bid_ratio": 1.0,
 }
 
+LINE_TEMPLATES = {
+    "match_notify": "【Opttwo 媒合通知】{region} 有新案件，共 {count} 台設備待回收，請至前台查看並出價。",
+}
+
 SETTINGS = {
     "permission_groups": PERMISSION_GROUPS,
     "workflow_parameters": WORKFLOW_PARAMETERS,
+    "line_templates": LINE_TEMPLATES,
 }
 
 
